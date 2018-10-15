@@ -105,6 +105,7 @@ export class DateTimePickerComponent implements OnInit, OnDestroy, ControlValueA
      * */
     @Input() disabled: boolean;
 
+
     /**
      * Array with dates that should be disabled (not selectable)
      * @default null
@@ -280,6 +281,19 @@ export class DateTimePickerComponent implements OnInit, OnDestroy, ControlValueA
     @Input() showOtherMonths: boolean = true;
 
     /**
+     * @default false
+     * @type {Boolean}
+     * */
+    @Input() showDoneButton: boolean = false;
+
+    /**
+     * @default set
+     * @type {String}
+     * */
+
+    @Input() doneButton : string = 'Set';
+
+    /**
      * Callback to invoke when dropdown gets focus.
      * */
     @Output() onFocus = new EventEmitter<any>();
@@ -396,6 +410,11 @@ export class DateTimePickerComponent implements OnInit, OnDestroy, ControlValueA
         }
         event.preventDefault();
         return;
+    }
+
+    public hidePicker(event:any) :void {
+        this.dialogClick = false;
+        this.hide();
     }
 
     /**
@@ -572,6 +591,8 @@ export class DateTimePickerComponent implements OnInit, OnDestroy, ControlValueA
         this.generateCalendar();
         this.changeDialogType(DialogType.Year);
     }
+
+
 
     /**
      * Set the selected moment's meridian

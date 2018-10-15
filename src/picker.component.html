@@ -164,5 +164,6 @@
                 <button class="owl-btn owl-meridian-btn" (click)="toggleMeridian($event)">{{meridianValue}}</button>
             </div>
         </div>
+        <button class='set-btn' *ngIf="showDoneButton === true" (click)="hidePicker($event)">{{ doneButton}}</button>
     </div>
 </div>
